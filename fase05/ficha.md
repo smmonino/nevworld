@@ -61,9 +61,11 @@ python scripts/actividades/05_caza_sql.py
 Responde brevemente:
 
 1. ¿Qué representa una fila del resultado? ¿Cuenta cacerías o unidades de comida?
+  - Cada fila representa un tipo de presa y el total de cacerías en las que aparece. Con ``COUNT(*)`` contamos el número de filas para cada grupo (``prey_type``), no las unidades de comida.
 2. ¿Qué hace `AS hunt_count`? Si lo cambias por `AS total_cacerias`, ¿qué referencias posteriores debes actualizar?
+  - ``AS hunt_count`` asigna un nombre a la columna calculada mediante ``COUNT(*)``. El CSV generado contendrá esta cabecera como referencia al total por presa.
 3. ¿Qué archivo ocupa menos en tu partida? ¿Demuestra eso que ese formato será siempre mejor?
-
+  - El archivo que ocupa menos el el ``CSV`` con ``1370 bytes`` frente  a los ``4480 bytes`` del ``PARQUET``.  A pesar de la diferencia, eso por si sólo no explica qué formato es mejor, ya que el tamaño depende de los datos y de cómo se almacenan. La diferencia está en para qué se utiliza cada formato: ``CSV`` es sencillo para leer y compartir datos, mientras que ``PARQUET`` está pensado para trabajar sobre grandes cantidades de datos y realizar consultas más "elaboradas".
 ## Entrega
 
 Entrega el script, `reports/hunts_by_prey_sql.csv` y una ficha breve con los tamaños, la comparación con la actividad 03 y las tres respuestas. Identifica la partida utilizada. No modifiques el RAW ni `hunts.csv`.
